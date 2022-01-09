@@ -33,5 +33,10 @@ module YardSale
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # add src directory
+    config.autoload_paths << root.join("src/events")
+    config.autoload_paths << root.join("src/contexts")
+    config.autoload_paths << root.join("src")
   end
 end

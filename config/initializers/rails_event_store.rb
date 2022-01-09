@@ -22,8 +22,10 @@ Rails.configuration.to_prepare do
   end
 
   # Register command handlers below
-  # Rails.configuration.command_bus.tap do |bus|
+  Rails.configuration.command_bus.tap do |bus|
+    event_store = Rails.configuration.event_store
   #   bus.register(PrintInvoice, Invoicing::OnPrint.new)
   #   bus.register(SubmitOrder,  ->(cmd) { Ordering::OnSubmitOrder.new.call(cmd) })
-  # end
+      bus.register(Sales::Commands::CreateSale, Sales::Handlers::SaleCreation.new(event_store))
+  end
 end
