@@ -3,7 +3,8 @@ require 'aggregate_root'
 require 'arkency/command_bus'
 
 Rails.configuration.to_prepare do
-  Rails.configuration.event_store = RailsEventStore::Client.new
+  event_store = RailsEventStore::Client.new
+  Rails.configuration.event_store = event_store
   Rails.configuration.command_bus = Arkency::CommandBus.new
 
   AggregateRoot.configure do |config|
@@ -23,9 +24,10 @@ Rails.configuration.to_prepare do
 
   # Register command handlers below
   Rails.configuration.command_bus.tap do |bus|
-    event_store = Rails.configuration.event_store
   #   bus.register(PrintInvoice, Invoicing::OnPrint.new)
   #   bus.register(SubmitOrder,  ->(cmd) { Ordering::OnSubmitOrder.new.call(cmd) })
       bus.register(Sales::Commands::CreateSale, Sales::Handlers::SaleCreation.new(event_store))
   end
+
+  SaleProjector.new.subscribe(event_store)
 end

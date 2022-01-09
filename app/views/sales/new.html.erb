@@ -1,0 +1,8 @@
+<%= form_with url: sales_path, method: :post do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field "sale[name]" %>
+  <%= f.label "Description" %>
+  <%= f.text_area "sale[description]" %>
+
+  <%= f.submit %>
+<% end %>

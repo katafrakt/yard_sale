@@ -15,7 +15,8 @@ module Sales
         event = SaleCreated.new(
           data: {
             sale_id: command.sale_id,
-            name: command.name
+            name: command.name,
+            description: command.description
           }
         )
         
