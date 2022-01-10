@@ -1,4 +1,15 @@
-<h1><%= @sale.name %></h1>
-<p><%= simple_format @sale.description %></p>
+<section class="w-full mx-auto bg-nordic-gray-light flex pt-12 md:pt-0 md:items-center bg-cover bg-right" style="height: 22rem; background-image: url('https://images.unsplash.com/photo-1422190441165-ec2956dc9ecc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80');">
+	<div class="container mx-auto w-full">
+		<div class="flex flex-col w-full justify-center items-start  px-6 tracking-wide">
+			<h1 class="text-black text-2xl my-4"><%= @sale.name %></h1>
+			<p><strong>Items on sale:</strong> <%= @sale.items_count %></p>
+		</div>
+	</div>
+</section>
 
-<p><strong>Items count:</strong> <%= @sale.items_count %></p>
+<section class="bg-white py-8 container w-full">
+<div class="w-full container mx-auto pt-4 pb-12 text-gray-500">
+<%= simple_format @sale.description %>
+</div>
+</section>
+

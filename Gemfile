@@ -62,3 +62,4 @@ end
 gem "rails_event_store", "~> 2.3.0"
 gem "dry-struct"
 gem "mongo", "~> 2.17"
+gem "tailwindcss-rails"

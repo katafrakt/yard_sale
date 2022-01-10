@@ -239,6 +239,8 @@ GEM
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.4-x86_64-darwin)
+      railties (>= 6.0.0)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -275,6 +277,7 @@ DEPENDENCIES
   rspec
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
