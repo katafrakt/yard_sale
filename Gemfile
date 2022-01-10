@@ -37,10 +37,10 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-#gem "bootsnap", require: false
+# gem "bootsnap", require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -50,16 +50,17 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "rspec"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "standardrb"
   gem "web-console"
 end
 
-gem "rails_event_store", "~> 2.3.0"
 gem "dry-struct"
 gem "mongo", "~> 2.17"
+gem "rails_event_store", "~> 2.3.0"
 gem "tailwindcss-rails"

@@ -1,6 +1,6 @@
-require 'rails_event_store'
-require 'aggregate_root'
-require 'arkency/command_bus'
+require "rails_event_store"
+require "aggregate_root"
+require "arkency/command_bus"
 
 Rails.configuration.to_prepare do
   event_store = RailsEventStore::Client.new
@@ -24,10 +24,10 @@ Rails.configuration.to_prepare do
 
   # Register command handlers below
   Rails.configuration.command_bus.tap do |bus|
-  #   bus.register(PrintInvoice, Invoicing::OnPrint.new)
-  #   bus.register(SubmitOrder,  ->(cmd) { Ordering::OnSubmitOrder.new.call(cmd) })
-      bus.register(Sales::Commands::CreateSale, Sales::Handlers::SaleCreation.new(event_store))
-      bus.register(Sales::Commands::CreateOffer, Sales::Handlers::OfferCreation.new(event_store))
+    #   bus.register(PrintInvoice, Invoicing::OnPrint.new)
+    #   bus.register(SubmitOrder,  ->(cmd) { Ordering::OnSubmitOrder.new.call(cmd) })
+    bus.register(Sales::Commands::CreateSale, Sales::Handlers::SaleCreation.new(event_store))
+    bus.register(Sales::Commands::CreateOffer, Sales::Handlers::OfferCreation.new(event_store))
   end
 
   [SaleProjector, OfferProjector].each do |projector|

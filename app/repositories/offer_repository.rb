@@ -8,7 +8,7 @@ class OfferRepository
   def by_sale(sale_id, opts = {})
     limit = opts.fetch(:limit, 8)
     offset = opts.fetch(:offset, 0)
-    collection.find(sale_id: sale_id).skip(offset).limit(limit).to_a.map do |offer|
+    collection.find(sale_id:).skip(offset).limit(limit).to_a.map do |offer|
       doc_to_entity(offer)
     end
   end
@@ -16,6 +16,7 @@ class OfferRepository
   private
 
   def mongo = Rails.configuration.mongodb
+
   def collection = mongo[:offers]
 
   def doc_to_entity(doc)

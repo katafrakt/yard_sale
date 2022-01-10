@@ -7,5 +7,6 @@ class SalesController < ApplicationController
   private
 
   def sale_repository = SaleRepository.new
+
   def offer_repository = OfferRepository.new
 end

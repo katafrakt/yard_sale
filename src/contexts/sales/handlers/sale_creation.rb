@@ -19,7 +19,7 @@ module Sales
             description: command.description
           }
         )
-        
+
         @event_store.publish(event, stream_name: stream)
       end
     end
