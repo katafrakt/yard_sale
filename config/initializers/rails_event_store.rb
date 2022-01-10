@@ -27,7 +27,10 @@ Rails.configuration.to_prepare do
   #   bus.register(PrintInvoice, Invoicing::OnPrint.new)
   #   bus.register(SubmitOrder,  ->(cmd) { Ordering::OnSubmitOrder.new.call(cmd) })
       bus.register(Sales::Commands::CreateSale, Sales::Handlers::SaleCreation.new(event_store))
+      bus.register(Sales::Commands::CreateOffer, Sales::Handlers::OfferCreation.new(event_store))
   end
 
-  SaleProjector.new.subscribe(event_store)
+  [SaleProjector, OfferProjector].each do |projector|
+    projector.new.subscribe(event_store)
+  end
 end

@@ -1,0 +1,31 @@
+<div class="container w-full text-right mb-6 mt-6">
+  <a class="btn-primary" href="/admin/sales/new">
+    New sale
+  </a>
+</div>
+
+<table class="table-auto items-center w-full bg-transparent border-collapse">
+  <thead>
+    <tr>
+      <th class="table-head-cell">Name</th>
+      <th class="table-head-cell">Status</th>
+      <th class="table-head-cell">Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+    <tr>
+      <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-s whitespace-nowrap p-4 text-left flex items-center">
+        <%= link_to sale.name, admin_sale_path(sale.id), class: "underline" %>
+      </th>
+      <td class="table-cell text-center">
+        <i class="fas fa-circle text-orange-500 mr-2"></i>
+        <%= sale.published? ? "Published" : "Not published" %>
+      </td>
+      <td class="table-cell text-center">
+        <%= sale.items_count %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

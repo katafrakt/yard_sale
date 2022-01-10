@@ -5,11 +5,21 @@ class SaleRepository
 
   def get(id)
     doc = collection.find(_id: id).to_a.first
-    Sale.new(id: id, name: doc[:name], description: doc[:description], published?: doc[:published], items_count: doc[:items_count])
+    doc_to_entity(doc)
   end
 
-  def all = collection.find.to_a
+  def all = collection.find.to_a.map {|x| doc_to_entity(x)}
+
+  def increment_items_count(sale_id)
+    collection.find(_id: sale_id).update_one("$inc" => {items_count: 1})
+  end
+
+  private
 
   def mongo = Rails.configuration.mongodb
   def collection = mongo[:sales]
+
+  def doc_to_entity(doc)
+    Sale.new(id: doc[:_id], name: doc[:name], description: doc[:description], published?: doc[:published], items_count: doc[:items_count])
+  end
 end

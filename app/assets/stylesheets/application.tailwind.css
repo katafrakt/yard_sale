@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150;
+  }
+
+  th.table-head-cell {
+    @apply px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center;
+  }
+
+  .table-cell {
+    @apply border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4;
   }
 }
-
-*/

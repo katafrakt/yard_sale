@@ -1,0 +1,2 @@
+class OfferCreated < EventBase
+end
