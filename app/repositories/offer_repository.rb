@@ -13,20 +13,51 @@ class OfferRepository
     end
   end
 
+  def search(query)
+    offers = collection.aggregate([
+      {
+        "$search" => {
+          "index" => "offers-search",
+          "text" => {
+            "query" => query,
+            "path" => ["name", "description"],
+            "fuzzy" => {"maxEdits" => 1}
+          }
+        }
+
+      },
+      {
+        "$limit" => 8
+      }
+    ]).to_a
+
+    sale_ids = offers.map { |o| o[:sale_id] }.uniq
+    sales = mongo[:sales].find(_id: {"$in" => sale_ids}).to_a
+
+    offers.map { |o| doc_to_entity(o, sales:) }
+  end
+
   private
 
   def mongo = Rails.configuration.mongodb
 
   def collection = mongo[:offers]
 
-  def doc_to_entity(doc)
-    Offer.new(
+  def doc_to_entity(doc, opts = {})
+    params = {
       id: doc[:_id],
       name: doc[:name],
       description: doc[:description],
       price: doc[:price].to_d,
       state: doc[:state].to_sym,
       image_url: doc[:image_url]
-    )
+    }
+
+    if opts[:sales]
+      sale = opts[:sales].detect { |s| s[:_id] == doc[:sale_id] }
+      params[:sale] = {id: sale[:_id], name: sale[:name]}
+    end
+
+    Offer.new(params)
   end
 end

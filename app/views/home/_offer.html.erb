@@ -1,0 +1,17 @@
+<div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col" id="<%= offer.id %>">
+  <a href="/sale/<%= offer.sale.id %>/offer/<%= offer.id %>" data-turbo-frame="_top">
+    <img class="hover:grow hover:shadow-lg" src="<%= offer.image_url %>">
+    <div class="pt-3 flex items-center justify-between">
+      <p class="font-semibold text-l"><%= offer.name %></p>
+      <p class="inline-block py-1 px-2">
+        <%= link_to offer.sale.name, sale_path(offer.sale.id), data: { "turbo-frame" => "_top" } %>
+      </p>
+    </div>
+    <div class="pt-3 flex items-center justify-between">
+      <p class="pt-1 text-gray-900"><%= offer.price %>€</p>
+      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded uppercase last:mr-0 mr-1 <%= availability_classes(offer) %>">
+        <%= availability_label(offer) %>
+      </span>
+    </div>
+  </a>
+</div>

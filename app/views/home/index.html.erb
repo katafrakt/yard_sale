@@ -1,0 +1,29 @@
+<div class="container mx-auto flex flex-wrap  xl:mb-12 xl:mt-12">
+  <div class="flex flex-col w-full xl:w-3/5">
+    <h1 class="my-4 text-3xl text-gray-600 font-bold leading-tight text-center md:text-left">
+      Welcome to YardSale!
+    </h1>
+    <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+      This is a place to list the <s>junk</s> unnecessary items you have so
+      other's can buy them from you.
+    </p>
+  </div>
+
+  <div class="flex flex-col w-full xl:w-2/5">
+    <h3 class="text-xl font-bold leading-tight">Hot sales:</h3>
+  </div>
+</div>
+
+<div class="flex items-center justify-center ">
+  <%= form_with(url: root_path, method: :get, html: { class: "flex border-2 border-gray-200 rounded" }) do |f| %>
+    <%= f.text_field :q, value: params[:q], placeholder: "Search offers...", class: "px-4 py2 xl:w-80" %><%= f.button "Search", type: "submit", class: "px-4 text-white bg-gray-600 border-l" %>
+  <% end %>
+</div>
+
+<% if @offers.nil? %>
+  <p class="hint">Type something in the search bar to search for offers (try "sword" for example)</p>
+<% elsif @offers.empty? %>
+  <p class="hint">Nothing found. Try different search term.
+<% end %>
+
+<%= render "search_results", offers: @offers %>

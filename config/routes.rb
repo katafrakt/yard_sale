@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   end
 
   mount RailsEventStore::Browser => "/res" if Rails.env.development?
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "home#index"
 end

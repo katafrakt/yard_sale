@@ -14,18 +14,18 @@
 </section>
 
 <section class="bg-white py-8">
-  <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+  <div class="container mx-auto flex items-end flex-wrap pt-4 pb-12">
   <% @offers.each do |offer| %>
     <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
       <a href="/sale/<%= @sale.id %>/offer/<%= offer.id %>">
         <img class="hover:grow hover:shadow-lg" src="<%= offer.image_url %>">
         <div class="pt-3 flex items-center justify-between">
-          <p><%= offer.name %></p>
+          <p class="font-semibold text-l"><%= offer.name %></p>
           <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded uppercase last:mr-0 mr-1 <%= availability_classes(offer) %>">
             <%= availability_label(offer) %>
           </span>
         </div>
-        <p class="pt-1 text-gray-900"><%= offer.price %></p>
+        <p class="pt-1 text-gray-900"><%= offer.price %>€</p>
       </a>
     </div>
   <% end %>
