@@ -11,6 +11,31 @@
 
   <div class="flex flex-col w-full xl:w-2/5">
     <h3 class="text-xl font-bold leading-tight">Hot sales:</h3>
+    <table class="items-start w-full bg-transparent border-collapse">
+      <tbody>
+      <% @sales.each do |sale| %>
+        <tr>
+          <th class="px-6 align-middle border-0 whitespace-nowrap p-4 text-left">
+            <%= sale.name %>
+          </th>
+          <td class="pc-6 align-middle p-4 border-0 text-xs">
+            <%= sale.items_count %> items
+          </td>
+          <td>
+            <div class="flex items-center">
+              <div class="relavive w-full">
+                <div class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200">
+                  <div style="width: <%= sale.availability %>%;" 
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"></div>
+                </div>
+              </div>
+              <span class="ml-2 text-xs"><%= sale.availability %>% available</span>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

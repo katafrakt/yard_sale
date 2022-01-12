@@ -5,8 +5,5 @@ class Offer < Dry::Struct
   attribute :state, Types::Symbol.enum(:available, :reserved, :sold)
   attribute :price, Types::Decimal.optional
   attribute? :image_url, Types::String.optional
-  attribute? :sale do
-    attribute :id, Types::UUID
-    attribute :name, Types::String
-  end
+  attribute? :sale, Sale
 end

@@ -32,7 +32,7 @@ class OfferRepository
     ]).to_a
 
     sale_ids = offers.map { |o| o[:sale_id] }.uniq
-    sales = mongo[:sales].find(_id: {"$in" => sale_ids}).to_a
+    sales = SaleRepository.new.by_ids(sale_ids)
 
     offers.map { |o| doc_to_entity(o, sales:) }
   end
@@ -54,8 +54,8 @@ class OfferRepository
     }
 
     if opts[:sales]
-      sale = opts[:sales].detect { |s| s[:_id] == doc[:sale_id] }
-      params[:sale] = {id: sale[:_id], name: sale[:name]}
+      sale = opts[:sales].detect { |s| s.id == doc[:sale_id] }
+      params[:sale] = sale
     end
 
     Offer.new(params)

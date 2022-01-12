@@ -1,7 +1,10 @@
 class SaleProjector
   def subscribe(event_store)
     event_store.subscribe(to: [SaleCreated]) { |event| insert_sale(event) }
-    event_store.subscribe(to: [OfferCreated]) { |event| increment_items_count(event) }
+    event_store.subscribe(to: [OfferCreated]) do |event|
+      increment_items_count(event)
+      increment_available_items_count(event)
+    end
   end
 
   private
@@ -13,5 +16,9 @@ class SaleProjector
 
   def increment_items_count(event)
     SaleRepository.new.increment_items_count(event.data[:sale_id])
+  end
+
+  def increment_available_items_count(event)
+    SaleRepository.new.increment_available_items_count(event.data[:sale_id])
   end
 end
