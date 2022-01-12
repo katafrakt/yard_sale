@@ -2,8 +2,17 @@ require "rails_event_store"
 require "aggregate_root"
 require "arkency/command_bus"
 
+module YAMLProxy
+  def self.dump(value) = YAML.dump(value)
+
+  def self.load(serialized) = YAML.unsafe_load(serialized)
+end
+
 Rails.configuration.to_prepare do
-  event_store = RailsEventStore::Client.new
+  event_store = RailsEventStore::Client.new(
+    repository: RailsEventStoreActiveRecord::EventRepository.new(serializer: YAMLProxy)
+  )
+
   Rails.configuration.event_store = event_store
   Rails.configuration.command_bus = Arkency::CommandBus.new
 
