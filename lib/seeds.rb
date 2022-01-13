@@ -31,9 +31,10 @@ class Seeds
         price: BigDecimal("300"),
         image_url: "https://i.ibb.co/7C1Vpt4/Screenshot-2022-01-12-at-18-24-59.png"
       ))
+      axe_uuid = SecureRandom.uuid
       bus.call(Sales::Commands::CreateOffer.new(
         sale_id: uuid1,
-        offer_id: SecureRandom.uuid,
+        offer_id: axe_uuid,
         name: "Golden Axe",
         description: "I find piece of weapon. Can be used both for killing things and as a decoration. It has some strange marings on the blade, but I haven't found anyone able to decipher them.",
         price: BigDecimal("1300"),
@@ -47,6 +48,7 @@ class Seeds
         price: BigDecimal("5"),
         image_url: "https://4.bp.blogspot.com/-Dj2SM7juM1k/UNJAiqY5Z4I/AAAAAAAABEU/UxbTx3d10GY/s320/The+One+Ring.jpg"
       ))
+      bus.call(Sales::Commands::ReserveOffer.new(offer_id: axe_uuid, sale_id: uuid1))
     end
 
     private

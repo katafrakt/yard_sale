@@ -11,7 +11,6 @@ class Sale < Dry::Struct
   end
 
   def availability
-    p self
-    (available_items_count / items_count * 100).round
+    (available_items_count.to_d / items_count * 100).round
   end
 end

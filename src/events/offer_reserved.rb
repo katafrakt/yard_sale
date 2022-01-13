@@ -1,0 +1,2 @@
+class OfferReserved < EventBase
+end

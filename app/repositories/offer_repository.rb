@@ -5,6 +5,10 @@ class OfferRepository
     collection.insert_one(data.merge(_id: id, price: price.to_f))
   end
 
+  def reserve_offer(id)
+    collection.find(_id: id).update_one("$set" => {state: "reserved"})
+  end
+
   def by_sale(sale_id, opts = {})
     limit = opts.fetch(:limit, 8)
     offset = opts.fetch(:offset, 0)

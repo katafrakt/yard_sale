@@ -16,7 +16,7 @@
       <% @sales.each do |sale| %>
         <tr>
           <th class="px-6 align-middle border-0 whitespace-nowrap p-4 text-left">
-            <%= sale.name %>
+            <%= link_to sale.name, sale_path(sale.id) %>
           </th>
           <td class="pc-6 align-middle p-4 border-0 text-xs">
             <%= sale.items_count %> items

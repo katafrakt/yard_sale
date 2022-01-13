@@ -5,6 +5,7 @@ class SaleRepository
 
   def get(id)
     doc = collection.find(_id: id).to_a.first
+    p doc
     doc_to_entity(doc)
   end
 
@@ -20,6 +21,10 @@ class SaleRepository
 
   def increment_available_items_count(sale_id)
     collection.find(_id: sale_id).update_one("$inc" => {available_items_count: 1})
+  end
+
+  def decrement_available_items_count(sale_id)
+    collection.find(_id: sale_id).update_one("$inc" => {available_items_count: -1})
   end
 
   private

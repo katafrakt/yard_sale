@@ -5,6 +5,7 @@ class SaleProjector
       increment_items_count(event)
       increment_available_items_count(event)
     end
+    event_store.subscribe(to: [OfferReserved]) {|event| decrement_available_items_count(event) }
   end
 
   private
@@ -20,5 +21,9 @@ class SaleProjector
 
   def increment_available_items_count(event)
     SaleRepository.new.increment_available_items_count(event.data[:sale_id])
+  end
+
+  def decrement_available_items_count(event)
+    SaleRepository.new.decrement_available_items_count(event.data[:sale_id])
   end
 end
