@@ -11,7 +11,7 @@ sale "Fantasy sale" {
     description "I don't really even know what this is. I got it from some innkeeper in return of my service, but never found out what it's supposed to do. Looks nice though."
   }
   offer "Golden axe" price=1300 state="reserved" image_url="https://i.ibb.co/QpQ5x9w/270038825-3092557261061956-1234593894203854475-n.jpg" {
-    description "I find piece of weapon. Can be used both for killing things and as a decoration. It has some strange marings on the blade, but I haven't found anyone able to decipher them."
+    description "A fine piece of weapon. Can be used both for killing things and as a decoration. It has some strange markings on the blade, but I haven't found anyone able to decipher them."
   }
   offer "A ring" price=5 image_url="https://4.bp.blogspot.com/-Dj2SM7juM1k/UNJAiqY5Z4I/AAAAAAAABEU/UxbTx3d10GY/s320/The+One+Ring.jpg" {
     description "This is just a trinket. If you cast it into the fire, it shows some weird markings, while remaining quite cool. You can use that to impress co-workers or your crush."

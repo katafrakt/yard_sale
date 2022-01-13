@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :sales
+  resources :sales do
+    resources :offers, only: [:show], path: "offer"
+  end
 
   namespace :admin do
-    resources :sales
+    #resources :sales
   end
 
   mount RailsEventStore::Browser => "/res" if Rails.env.development?

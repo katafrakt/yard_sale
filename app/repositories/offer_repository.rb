@@ -17,6 +17,11 @@ class OfferRepository
     end
   end
 
+  def get(sale_id, offer_id)
+    doc = collection.find(_id: offer_id, sale_id: sale_id).first
+    doc_to_entity(doc)
+  end
+
   def search(query)
     offers = collection.aggregate([
       {

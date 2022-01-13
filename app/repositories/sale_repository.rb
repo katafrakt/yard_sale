@@ -5,7 +5,6 @@ class SaleRepository
 
   def get(id)
     doc = collection.find(_id: id).to_a.first
-    p doc
     doc_to_entity(doc)
   end
 
