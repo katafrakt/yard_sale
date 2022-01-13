@@ -1,8 +1,0 @@
-fantasy:
-  name: Fantasy Sale
-  currency: gold
-  description: "I used to be an adventurer, like you. Then I took an arrow to the knee and now I'm selling all that junk that's left from those days."
-  products:
-    sword:
-      name: Rusty sword
-      price: 

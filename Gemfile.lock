@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/katafrakt/sdlang.rb.git
+  revision: ff2fdc2b151eb72a3e8f4cecb4ec692b993f2c00
+  specs:
+    sdlang (0.1.0)
+      parslet
+      tzinfo
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -160,6 +168,7 @@ GEM
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
+    parslet (2.0.0)
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -308,6 +317,7 @@ DEPENDENCIES
   rails_event_store (~> 2.3.0)
   redis (~> 4.0)
   rspec
+  sdlang!
   sprockets-rails
   standardrb
   stimulus-rails
